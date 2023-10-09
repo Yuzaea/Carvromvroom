@@ -49,17 +49,25 @@ namespace Carvromvroom
         }
 
 
-        public Car Delete(int id)
+        public bool Delete(int id)
         {
-            Car booktodelete = null;
+            Car bookToDelete = null;
             foreach (var book in carsgovroom)
             {
                 if (book.Id == id)
-                    booktodelete = book;
-                carsgovroom.Remove(booktodelete);
+                {
+                    bookToDelete = book;
+                    break; 
+                }
+            } if (bookToDelete != null)
+            {
+                carsgovroom.Remove(bookToDelete);return true; 
             }
-            return booktodelete;
+            else
+            { return false;
+            }
         }
+
 
 
         public bool Update(int id, Car UpdateBookie)
